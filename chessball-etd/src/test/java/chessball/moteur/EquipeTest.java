@@ -1,13 +1,10 @@
-
+package chessball.moteur;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
-import chessball.moteur.Couleur;
-import chessball.moteur.Equipe;
-import chessball.moteur.Piece;
-import chessball.moteur.TypePiece;
+
 
 public class EquipeTest {
 

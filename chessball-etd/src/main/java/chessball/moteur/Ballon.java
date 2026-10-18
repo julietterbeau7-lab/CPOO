@@ -9,7 +9,7 @@ public Ballon(Plateau plateau, Position depart)throws  IllegalStateException{
     if (plateau.estLibre(depart)){
         if (!depart.estZoneDeTouche() ){
         this.position=depart;
-        plateau.caseA(depart).metUnballon(true);
+        plateau.caseA(depart).poserBallon(true);
     }
         else{
             throw new  IllegalStateException("hors zone");
@@ -25,8 +25,8 @@ public void deplacerVers(Position p){
    
       if (plateau.estLibre(p)){
         if (!p.estZoneDeTouche() ){
-            plateau.caseA(position).metUnballon(false);
-             plateau.caseA(p).metUnballon(true);
+            plateau.caseA(position).poserBallon(false);
+             plateau.caseA(p).poserBallon(true);
          
     }
         else{

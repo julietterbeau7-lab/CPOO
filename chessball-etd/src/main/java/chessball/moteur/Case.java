@@ -30,7 +30,12 @@ public final class Case {
         return aUnBallon;
 
     }
-    public void metUnballon(Boolean b){
-        aUnBallon=b;
+    public void poserBallon(Boolean b)throws IllegalStateException{
+        if (listPieces.isEmpty()){
+            aUnBallon=b;
+        }
+       else{
+         throw new IllegalStateException("deja une piece");
+       }
     }
 }

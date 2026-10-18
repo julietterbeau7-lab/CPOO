@@ -1,9 +1,8 @@
+package chessball.moteur;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
-import chessball.moteur.Direction;
-import chessball.moteur.Position;
 
 public class PositionTest {
     
