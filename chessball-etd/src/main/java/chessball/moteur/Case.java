@@ -22,8 +22,8 @@ public final class Case {
 
     }
 
-    public boolean occupee(){   // une pièce ou ballon s'y trouve
-        return (!listPieces.isEmpty() || porteBallon());
+    public boolean occupee(){   // une pièce s'y trouve
+        return (!listPieces.isEmpty() );
     }
 
     public boolean porteBallon(){ 
@@ -31,7 +31,7 @@ public final class Case {
 
     }
     public void poserBallon(Boolean b)throws IllegalStateException{
-        if (listPieces.isEmpty()){
+        if (!this.occupee()){
             aUnBallon=b;
         }
        else{

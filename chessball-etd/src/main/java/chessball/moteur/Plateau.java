@@ -28,7 +28,8 @@ public final class Plateau {
         
     }
     public void retirer(Piece piece){}
+
     public boolean estLibre(Position p) {
-        return true;
+        return !(this.caseA(p).occupee()||this.caseA(p).porteBallon());
     }
 }
