@@ -5,10 +5,11 @@ public class Ballon {
  public Position position;  
 public Ballon(Plateau plateau, Position depart)throws  IllegalStateException{
     this.plateau=plateau;
-    if (!depart.occupe()){
-        if (!depart.zonnetouche){
+
+    if (plateau.estLibre(depart)){
+        if (!depart.estZoneDeTouche() ){
         this.position=depart;
-        this.position.paslibre;
+        plateau.caseA(depart).metUnballon(true);
     }
         else{
             throw new  IllegalStateException("hors zone");
@@ -22,11 +23,11 @@ public Ballon(Plateau plateau, Position depart)throws  IllegalStateException{
 }
 public void deplacerVers(Position p){
    
-      if (!depart.occupe()){
-        if (!depart.zonnetouche){
-             this.position.libre;
-        p.paslibre;
-        this.position=p;
+      if (plateau.estLibre(p)){
+        if (!p.estZoneDeTouche() ){
+            plateau.caseA(position).metUnballon(false);
+             plateau.caseA(p).metUnballon(true);
+         
     }
         else{
              throw new  IllegalStateException("hors zone");

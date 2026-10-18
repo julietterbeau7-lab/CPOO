@@ -6,9 +6,11 @@ public final class Case {
 
     private Position position;
     private Optional<Piece> listPieces;
+    private Boolean aUnBallon;
 
     Case(Position position){    // visibilité paquet : seul Plateau
         this.position = position;
+        aUnBallon=false;
     }
 
     public Position position(){
@@ -20,11 +22,15 @@ public final class Case {
 
     }
 
-    public boolean occupee(){   // une pièce s'y trouve
-        return !(listPieces.isEmpty());
+    public boolean occupee(){   // une pièce ou ballon s'y trouve
+        return (!listPieces.isEmpty() || porteBallon());
     }
 
-    /*public boolean porteBallon(){ //Q6
+    public boolean porteBallon(){ 
+        return aUnBallon;
 
-    }*/
+    }
+    public void metUnballon(Boolean b){
+        aUnBallon=b;
+    }
 }
