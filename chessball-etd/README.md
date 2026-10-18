@@ -1,6 +1,6 @@
 # chessball-etd : squelette du moteur ChessBall (CPOO1, TP3 à TP5)
 
-Projet Maven prêt (Java 21, JUnit 5, Mockito, JaCoCo, profil PIT). Il se
+Projet Maven prêt (Java 25 LTS, JUnit 5, Mockito, JaCoCo, profil PIT). Il se
 récupère au TP3 (« Code → Download ZIP » sur la page de l'espace de travail,
 ou `git clone`) et vit jusqu'au rendu du TP5. Le jeu est le **ChessBall
 officiel** : plateau 7×6, cinq pièces par camp (deux attaquants, trois

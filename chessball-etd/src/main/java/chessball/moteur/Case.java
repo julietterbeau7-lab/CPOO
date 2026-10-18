@@ -6,9 +6,11 @@ public final class Case {
 
     private Position position;
     private Optional<Piece> listPieces;
+    private boolean aUneBalle;
 
     Case(Position position){    // visibilité paquet : seul Plateau
         this.position = position;
+        this.listPieces = Optional.empty();
     }
 
     public Position position(){
@@ -24,7 +26,15 @@ public final class Case {
         return !(listPieces.isEmpty());
     }
 
-    /*public boolean porteBallon(){ //Q6
+    public boolean porteBallon(){ //Q6
+        return aUneBalle;
+    }
 
-    }*/
+    void placer(Piece p) {
+        this.listPieces = Optional.of(p);
+    }
+
+    void vider() {
+        this.listPieces = Optional.empty();
+    }
 }

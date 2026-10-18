@@ -1,5 +1,6 @@
 package chessball.moteur;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public final class Equipe {
@@ -10,6 +11,7 @@ public final class Equipe {
 
     public Equipe(Couleur couleur){
         this.couleur = couleur;
+        this.pieces = new ArrayList<>();
     }
 
     public void ajouter(Piece piece)throws IllegalStateException{
