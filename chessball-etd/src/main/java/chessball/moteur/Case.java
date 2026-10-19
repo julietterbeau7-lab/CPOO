@@ -6,11 +6,11 @@ public final class Case {
 
     private Position position;
     private Optional<Piece> listPieces;
-    private boolean aUneBalle;
+    private Boolean aUnBallon;
 
     Case(Position position){    // visibilité paquet : seul Plateau
         this.position = position;
-        this.listPieces = Optional.empty();
+        aUnBallon = false;
     }
 
     public Position position(){
@@ -23,17 +23,27 @@ public final class Case {
     }
 
     public boolean occupee(){   // une pièce s'y trouve
-        return !(listPieces.isEmpty());
+        return (!listPieces.isEmpty());
     }
 
-    public boolean porteBallon(){ //Q6
-        return aUneBalle;
+    public boolean porteBallon(){ 
+        return aUnBallon;
+
+    }
+
+    public void poserBallon(Boolean b)throws IllegalStateException{
+        if (!this.occupee()){
+            aUnBallon = b;
+        }
+        else{
+            throw new IllegalStateException("Il existe deja une piece");
+        }
     }
 
     void placer(Piece p) {
         this.listPieces = Optional.of(p);
     }
-
+    
     void vider() {
         this.listPieces = Optional.empty();
     }

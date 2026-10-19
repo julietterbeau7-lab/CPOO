@@ -66,4 +66,24 @@ class PlateauTest {
         assertTrue(plateau.pieceEn(c5).isEmpty());
         assertEquals(c4, plateau.positionDe(att).get());
     }
+
+    @Test
+    void testEstLibre() {
+        Plateau plateau = new Plateau();
+        Position d4 = Position.of("d4");
+        Position c5 = Position.of("c5");
+        Piece att = new Piece(TypePiece.ATTAQUANT);
+
+        assertTrue(plateau.estLibre(d4));
+
+        plateau.placer(att, c5);
+        assertFalse(plateau.estLibre(c5));
+
+        plateau.caseA(d4).poserBallon(true); 
+        assertFalse(plateau.estLibre(d4));
+        assertFalse(plateau.caseA(d4).occupee());
+
+        plateau.retirer(att);
+        assertTrue(plateau.estLibre(c5));
+    }
 }
