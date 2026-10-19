@@ -1,6 +1,7 @@
 package chessball.moteur;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public final class Equipe {
@@ -15,9 +16,15 @@ public final class Equipe {
     }
 
     public void ajouter(Piece piece)throws IllegalStateException{
+        
         if (piece.getCouleur() != null && piece.getCouleur() != couleur){
             throw new IllegalStateException("pas la bonne equipe");
         }
+
+        if (pieces.size()>=EFFECTIF) {
+            throw new IllegalStateException("effectif max atteint");
+        }
+
         pieces.remove(piece);
         pieces.add(piece);
         piece.setEquipe(this);
@@ -28,6 +35,6 @@ public final class Equipe {
     }
 
     public List<Piece> getPieces(){
-        return pieces;
+        return Collections.unmodifiableList(pieces);
     }
 }

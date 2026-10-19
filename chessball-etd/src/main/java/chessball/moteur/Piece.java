@@ -16,5 +16,7 @@ public final class Piece {
 
     public void setEquipe(Equipe equipe){
         this.equipe = equipe;
+        if (equipe != null) {
+        this.couleur=equipe.couleur;}
     }
 }

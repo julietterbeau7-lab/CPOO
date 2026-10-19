@@ -44,6 +44,7 @@ public class EquipeTest {
         System.out.println(assertThrows(IllegalStateException.class, () -> t2.ajouter(p1)));
     
 }
+  @Test
   void pasplusde6() {	
         Equipe t1= new Equipe(Couleur.BLEUS);
 
@@ -53,15 +54,15 @@ public class EquipeTest {
         Piece p4=new Piece(TypePiece.ATTAQUANT);
         Piece p5=new Piece(TypePiece.ATTAQUANT);
         Piece p6=new Piece(TypePiece.ATTAQUANT);
-        Piece p7=new Piece(TypePiece.ATTAQUANT);
+    
         t1.ajouter(p1);
         t1.ajouter(p2);
         t1.ajouter(p3);
         t1.ajouter(p4);
         t1.ajouter(p5);
-        t1.ajouter(p6);
-        System.out.println(assertThrows(IllegalStateException.class, () -> t1.ajouter(p7)));
+        System.out.println(assertThrows(IllegalStateException.class, () -> t1.ajouter(p6)));
   }
+    @Test
  void pasdeclear() {	
         Equipe t1= new Equipe(Couleur.BLEUS);
 
@@ -72,7 +73,3 @@ public class EquipeTest {
 
 
  
-       // System.out.println(assertThrows(IllegalArgumentException.class, () -> new Velo((Selle)null)));
- 
-
-        //assertSame(selle, velo.getSelle());

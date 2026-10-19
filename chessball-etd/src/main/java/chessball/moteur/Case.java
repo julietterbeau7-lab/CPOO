@@ -6,11 +6,12 @@ public final class Case {
 
     private Position position;
     private Optional<Piece> listPieces;
-    private Boolean aUnBallon;
+    private boolean aUnBallon;
 
     Case(Position position){    // visibilité paquet : seul Plateau
         this.position = position;
-        aUnBallon = false;
+        aUnBallon=false;
+        this.listPieces = Optional.empty();
     }
 
     public Position position(){
@@ -31,7 +32,7 @@ public final class Case {
 
     }
 
-    public void poserBallon(Boolean b)throws IllegalStateException{
+    public void poserBallon(boolean b) throws IllegalStateException{
         if (!this.occupee()){
             aUnBallon = b;
         }

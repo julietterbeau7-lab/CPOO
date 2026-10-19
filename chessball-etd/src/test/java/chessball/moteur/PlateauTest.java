@@ -87,3 +87,4 @@ class PlateauTest {
         assertTrue(plateau.estLibre(c5));
     }
 }
+
