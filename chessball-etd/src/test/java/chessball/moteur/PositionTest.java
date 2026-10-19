@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PositionTest {
     
     @Test
-    void getColonneEtRangee(){
+    void testGetColonneEtRangee(){
         assertEquals(Position.of("d4").colonne(), 3);
         assertEquals(Position.of("d4").rangee(), 3);
         assertEquals(Position.of("a1").colonne(), 0);
@@ -16,24 +16,24 @@ public class PositionTest {
     }
 
     @Test
-    void unidentifierDePosition(){
+    void testUnidentifierDePosition(){
         assertThrows(IllegalArgumentException.class, () -> Position.of("h1"));
         assertThrows(IllegalArgumentException.class, () -> Position.of("a7"));
         assertThrows(IllegalArgumentException.class, () -> new Position(7 , 0));
     }
 
     @Test
-    void voisinageDePosition(){
+    void testVoisinageDePosition(){
         assertEquals(Position.of("d4").voisine(Direction.NORD).orElseThrow(), Position.of("d5"));
     }
 
     @Test
-    void aucuneVoisinage(){
+    void testAucuneVoisinage(){
         assertTrue(Position.of("a1").voisine(Direction.OUEST).isEmpty());
     }
 
     @Test
-    void checkZoneDeTouche(){
+    void testZoneDeTouche(){
         assertTrue(Position.of("a3").estZoneDeTouche());
         assertTrue(Position.of("g5").estZoneDeTouche());
         assertFalse(Position.of("a1").estZoneDeTouche());
@@ -41,14 +41,14 @@ public class PositionTest {
     }
 
     @Test
-    void checkLigneDeBut(){
+    void testLigneDeBut(){
         assertTrue(Position.of("b6").estLigneDeBut());
         assertTrue(Position.of("f1").estLigneDeBut());
         assertFalse(Position.of("d4").estLigneDeBut());
     }
 
     @Test
-    void constructeurDePosition(){
+    void testConstructeurDePosition(){
         assertEquals(Position.of("d4"), new Position(3 , 3));
         assertNotSame(Position.of("d4"), new Position(4 , 4));
     }

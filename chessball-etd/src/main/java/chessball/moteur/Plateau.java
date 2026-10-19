@@ -16,7 +16,7 @@ public final class Plateau {
                 createPlateau[i][j] = new Case(new Position(i, j));
             }
         }
-        
+
         this.listCases = createPlateau;
         positionsDesPieces = new HashMap<>();
     }
@@ -33,7 +33,7 @@ public final class Plateau {
         return Optional.ofNullable(positionsDesPieces.get(p));
     }
 
-    public void placer(Piece piece, Position cible){
+    public void placer(Piece piece, Position cible) throws IllegalStateException{
         if (!estLibre(cible)) {
             throw new IllegalStateException("Cible n'est pas libre");
         }
@@ -52,7 +52,10 @@ public final class Plateau {
             positionsDesPieces.remove(piece);
         }
     }
+    
     public boolean estLibre(Position p) {
         return !caseA(p).occupee() && !caseA(p).porteBallon();
     }
+
+
 }
