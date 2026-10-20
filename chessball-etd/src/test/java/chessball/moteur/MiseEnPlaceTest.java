@@ -1,6 +1,9 @@
 package chessball.moteur;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -84,8 +87,8 @@ public class MiseEnPlaceTest {
 
     @Test
     void verifierNombreParEquipe(){
-        assertEquals(bleus.pieces.size(), 5);
-        assertEquals(rouges.pieces.size(), 5);
+        assertEquals(bleus.pieces().size(), 5);
+        assertEquals(rouges.pieces().size(), 5);
     }
 
     @Test 
@@ -95,8 +98,8 @@ public class MiseEnPlaceTest {
         int compteDesPiecesAttRouges = 0;
         int compteDesPiecesDefRouges = 0;
 
-        for (Piece piece : bleus.pieces){
-            if (piece.type == TypePiece.ATTAQUANT) {
+        for (Piece piece : bleus.pieces()){
+            if (piece.type() == TypePiece.ATTAQUANT) {
                 compteDesPiecesAttBleus ++;
             }
             else{
@@ -104,8 +107,8 @@ public class MiseEnPlaceTest {
             }
         }
 
-        for (Piece piece : rouges.pieces){
-            if (piece.type == TypePiece.ATTAQUANT) {
+        for (Piece piece : rouges.pieces()){
+            if (piece.type() == TypePiece.ATTAQUANT) {
                 compteDesPiecesAttRouges ++;
             }
             else{
@@ -121,15 +124,15 @@ public class MiseEnPlaceTest {
 
     @Test
     void verifierPositionDepartDesDeffenseur(){
-        for (Piece piece : bleus.pieces){
-            if (piece.type == TypePiece.DEFENSEUR) {
+        for (Piece piece : bleus.pieces()){
+            if (piece.type() == TypePiece.DEFENSEUR) {
                 Position pBleus = plateau.positionDe(piece).orElseThrow();
                 assertTrue(pBleus.estLigneDeBut());
             }
         }
 
-        for (Piece piece : rouges.pieces){
-            if (piece.type == TypePiece.DEFENSEUR) {
+        for (Piece piece : rouges.pieces()){
+            if (piece.type() == TypePiece.DEFENSEUR) {
                 Position pRouges = plateau.positionDe(piece).orElseThrow();
                 assertTrue(pRouges.estLigneDeBut());
             }
@@ -152,7 +155,7 @@ public class MiseEnPlaceTest {
     void verifierPositionDeBallon(){
         Position d4 = Position.of("d4");
         
-        assertEquals(ballon.position, d4);
+        assertEquals(ballon.position(), d4);
         assertFalse(plateau.estLibre(d4));
     }
 

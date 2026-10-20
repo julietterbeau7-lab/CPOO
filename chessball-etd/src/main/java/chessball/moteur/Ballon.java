@@ -2,18 +2,18 @@ package chessball.moteur;
 
 public class Ballon {
     private Plateau plateau;
-    public Position position;  
+    private Position position;  
 
-    public Ballon(Plateau plateau, Position depart) throws  IllegalStateException{
+    public Ballon(Plateau plateau, Position depart) throws IllegalStateException, IllegalArgumentException{
         this.plateau = plateau;
 
         if (plateau.estLibre(depart)){
-            if (!depart.estZoneDeTouche() ){
-            this.position = depart;
-            plateau.caseA(depart).poserBallon(true);
+            if (!depart.estZoneDeTouche()){
+                this.position = depart;
+                plateau.caseA(depart).poserBallon(true);
             }
             else{
-                throw new  IllegalStateException("hors zone");
+                throw new  IllegalArgumentException("hors zone");
             }
         }
         else{
@@ -21,8 +21,11 @@ public class Ballon {
         }
     }
 
+    public Position position(){
+        return this.position;
+    }
 
-    public void deplacerVers(Position p) throws IllegalStateException{
+    public void deplacerVers(Position p) throws IllegalStateException, IllegalArgumentException{
         if (plateau.estLibre(p)){
             if (!p.estZoneDeTouche() ){
                 plateau.caseA(this.position).poserBallon(false);
@@ -30,11 +33,11 @@ public class Ballon {
                 this.position = p;
             }
             else{
-                throw new  IllegalStateException("Cette position est zone de touche");
+                throw new  IllegalArgumentException("Cette position est zone de touche");
             }
         }
         else{
-            throw new  IllegalStateException("Cette position est occupée");
+            throw new IllegalStateException("Cette position est occupée");
         }
     } 
 }

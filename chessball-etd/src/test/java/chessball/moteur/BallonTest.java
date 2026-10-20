@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -27,7 +28,7 @@ public class BallonTest {
 
     @Test
     void testPositionBallon() {	
-        assertSame(d4, ballon.position);
+        assertSame(d4, ballon.position());
         assertTrue(plateau.caseA(d4).porteBallon());
     }
 
@@ -36,7 +37,7 @@ public class BallonTest {
     void testDeplacementBallon() {	
         ballon.deplacerVers(e3);
 
-        assertSame(e3, ballon.position);
+        assertSame(e3, ballon.position());
         assertFalse(plateau.caseA(d4).porteBallon());
         assertTrue(plateau.caseA(e3).porteBallon());
 
@@ -54,7 +55,7 @@ public class BallonTest {
     
     @Test
     void testDeplacementBallonHorsjeu() {
-        System.out.println(assertThrows(IllegalStateException.class, () -> new Ballon(plateau,a3)));
-        System.out.println(assertThrows(IllegalStateException.class, () -> ballon.deplacerVers(a3)));
+        System.out.println(assertThrows(IllegalArgumentException.class, () -> new Ballon(plateau,a3)));
+        System.out.println(assertThrows(IllegalArgumentException.class, () -> ballon.deplacerVers(a3)));
     }
 }

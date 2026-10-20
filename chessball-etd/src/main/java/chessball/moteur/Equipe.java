@@ -7,16 +7,16 @@ import java.util.List;
 public final class Equipe {
     
     public static final int EFFECTIF = 5;
-    public Couleur couleur;
-    public List<Piece> pieces;
+    private Couleur couleur;
+    private List<Piece> pieces;
 
     public Equipe(Couleur couleur){
         this.couleur = couleur;
         this.pieces = new ArrayList<>();
     }
 
-    public void ajouter(Piece piece)throws IllegalStateException{
-        if (piece.getCouleur() != null && piece.getCouleur() != couleur){
+    public void ajouter(Piece piece) throws IllegalStateException{
+        if (piece.couleur() != null && piece.couleur() != couleur){
             throw new IllegalStateException("pas la bonne equipe");
         }
 
@@ -32,11 +32,11 @@ public final class Equipe {
         piece.setEquipe(this);
     }
 
-    public Couleur getCouleur(){
+    public Couleur couleur(){
         return couleur;
     }
 
-    public List<Piece> getPieces(){
+    public List<Piece> pieces(){
         return Collections.unmodifiableList(pieces);
     }
 }

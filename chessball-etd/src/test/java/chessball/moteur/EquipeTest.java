@@ -24,20 +24,20 @@ public class EquipeTest {
         eB.ajouter(p);
         eB.ajouter(p);
 
-        assertTrue(eB.getPieces().size() == 1);
+        assertTrue(eB.pieces().size() == 1);
     }
 
     @Test
     void laPieceAjouteEstDeLaBonneEquipe() {	
         eB.ajouter(p);
-        assertSame(p.getCouleur(), eB.getCouleur());
+        assertSame(p.couleur(), eB.couleur());
 
     }
     
     @Test
     void equipeContientBienLaNouvellePiece() {	
         eB.ajouter(p);
-        assertTrue(eB.getPieces().contains(p));
+        assertTrue(eB.pieces().contains(p));
     
     }
     
@@ -50,12 +50,12 @@ public class EquipeTest {
 
     @Test
     void pasPlusDe6() {	
-        Piece p1=new Piece(TypePiece.ATTAQUANT);
-        Piece p2=new Piece(TypePiece.ATTAQUANT);
-        Piece p3=new Piece(TypePiece.ATTAQUANT);
-        Piece p4=new Piece(TypePiece.ATTAQUANT);
-        Piece p5=new Piece(TypePiece.ATTAQUANT);
-        Piece p6=new Piece(TypePiece.ATTAQUANT);
+        Piece p1 = new Piece(TypePiece.ATTAQUANT);
+        Piece p2 = new Piece(TypePiece.ATTAQUANT);
+        Piece p3 = new Piece(TypePiece.ATTAQUANT);
+        Piece p4 = new Piece(TypePiece.ATTAQUANT);
+        Piece p5 = new Piece(TypePiece.ATTAQUANT);
+        Piece p6 = new Piece(TypePiece.ATTAQUANT);
     
         eB.ajouter(p1);
         eB.ajouter(p2);
@@ -68,6 +68,6 @@ public class EquipeTest {
     @Test
     void pasDeClear() {	
         eB.ajouter(p);
-        System.out.println(assertThrows(UnsupportedOperationException.class, () -> eB.getPieces().clear()));
+        System.out.println(assertThrows(UnsupportedOperationException.class, () -> eB.pieces().clear()));
     }
 } 
