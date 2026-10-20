@@ -14,9 +14,10 @@ public final class Piece {
         return couleur;
     }
 
-    public void setEquipe(Equipe equipe){
+    void setEquipe(Equipe equipe){
         this.equipe = equipe;
         if (equipe != null) {
-        this.couleur=equipe.couleur;}
+            this.couleur = equipe.couleur;
+        }
     }
 }

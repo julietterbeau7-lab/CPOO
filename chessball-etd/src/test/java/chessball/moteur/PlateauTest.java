@@ -69,11 +69,8 @@ class PlateauTest {
 
     @Test
     void testEstLibre() {
-        Plateau plateau = new Plateau();
         Position d4 = Position.of("d4");
         Position c5 = Position.of("c5");
-        Piece att = new Piece(TypePiece.ATTAQUANT);
-
         assertTrue(plateau.estLibre(d4));
 
         plateau.placer(att, c5);

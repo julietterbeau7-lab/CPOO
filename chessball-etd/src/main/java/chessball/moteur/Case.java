@@ -10,7 +10,7 @@ public final class Case {
 
     Case(Position position){    // visibilité paquet : seul Plateau
         this.position = position;
-        aUnBallon=false;
+        aUnBallon = false;
         this.listPieces = Optional.empty();
     }
 

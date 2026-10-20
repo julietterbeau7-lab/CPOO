@@ -16,16 +16,18 @@ public final class Equipe {
     }
 
     public void ajouter(Piece piece)throws IllegalStateException{
-        
         if (piece.getCouleur() != null && piece.getCouleur() != couleur){
             throw new IllegalStateException("pas la bonne equipe");
         }
 
-        if (pieces.size()>=EFFECTIF) {
+        if (pieces.size() >= EFFECTIF) {
             throw new IllegalStateException("effectif max atteint");
         }
 
-        pieces.remove(piece);
+        if (pieces.contains(piece)){
+            return;
+        }
+
         pieces.add(piece);
         piece.setEquipe(this);
     }

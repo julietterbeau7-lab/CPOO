@@ -1,53 +1,55 @@
 package chessball.moteur;
+
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
-
 public class EquipeTest {
+    private Equipe eB;
+    private Equipe eR;
+    private Piece p;
 
-    @Test
-    void testpas2foislamemepiece() {	
-
-        Equipe e1= new Equipe(Couleur.BLEUS);
-        Piece p1=new Piece(TypePiece.ATTAQUANT);
-        
-        e1.ajouter(p1);
-        e1.ajouter(p1);
-        assertTrue(e1.getPieces().size()==1);
+    @BeforeEach 
+    void setup(){
+        eB = new Equipe(Couleur.BLEUS);
+        eR = new Equipe(Couleur.ROUGES);
+        p = new Piece(TypePiece.ATTAQUANT);
     }
 
     @Test
-    void lapieceajouteestdelabonneequipe() {	
-        Equipe t1= new Equipe(Couleur.BLEUS);
-        Piece p1=new Piece(TypePiece.ATTAQUANT);
-        t1.ajouter(p1);
-        assertSame(p1.getCouleur(),t1.getCouleur());
+    void testPas2FoisLamemePiece() {	        
+        eB.ajouter(p);
+        eB.ajouter(p);
+
+        assertTrue(eB.getPieces().size() == 1);
+    }
+
+    @Test
+    void laPieceAjouteEstDeLaBonneEquipe() {	
+        eB.ajouter(p);
+        assertSame(p.getCouleur(), eB.getCouleur());
 
     }
-     @Test
-    void equipecontientbienlanouvellepiece() {	
-        Equipe t1= new Equipe(Couleur.BLEUS);
-        Piece p1=new Piece(TypePiece.ATTAQUANT);
-        t1.ajouter(p1);
-        assertTrue(t1.getPieces().contains(p1));
+    
+    @Test
+    void equipeContientBienLaNouvellePiece() {	
+        eB.ajouter(p);
+        assertTrue(eB.getPieces().contains(p));
     
     }
-        @Test
-    void piecedelabonneequipe() {	
-        Equipe t1= new Equipe(Couleur.BLEUS);
-        Equipe t2= new Equipe(Couleur.ROUGES    );
-        Piece p1=new Piece(TypePiece.ATTAQUANT);
-        p1.setEquipe(t1);
-        System.out.println(assertThrows(IllegalStateException.class, () -> t2.ajouter(p1)));
     
-}
-  @Test
-  void pasplusde6() {	
-        Equipe t1= new Equipe(Couleur.BLEUS);
+    @Test
+    void pieceDeLaBonneEquipe() {	
+        p.setEquipe(eB);
+        System.out.println(assertThrows(IllegalStateException.class, () -> eR.ajouter(p)));
+    
+    }
 
+    @Test
+    void pasPlusDe6() {	
         Piece p1=new Piece(TypePiece.ATTAQUANT);
         Piece p2=new Piece(TypePiece.ATTAQUANT);
         Piece p3=new Piece(TypePiece.ATTAQUANT);
@@ -55,21 +57,17 @@ public class EquipeTest {
         Piece p5=new Piece(TypePiece.ATTAQUANT);
         Piece p6=new Piece(TypePiece.ATTAQUANT);
     
-        t1.ajouter(p1);
-        t1.ajouter(p2);
-        t1.ajouter(p3);
-        t1.ajouter(p4);
-        t1.ajouter(p5);
-        System.out.println(assertThrows(IllegalStateException.class, () -> t1.ajouter(p6)));
-  }
+        eB.ajouter(p1);
+        eB.ajouter(p2);
+        eB.ajouter(p3);
+        eB.ajouter(p4);
+        eB.ajouter(p5);
+        System.out.println(assertThrows(IllegalStateException.class, () -> eB.ajouter(p6)));
+    }
+
     @Test
- void pasdeclear() {	
-        Equipe t1= new Equipe(Couleur.BLEUS);
-
-        Piece p1=new Piece(TypePiece.ATTAQUANT);
-        t1.ajouter(p1);
-        System.out.println(assertThrows(UnsupportedOperationException.class, () -> t1.getPieces().clear()));
-  }}
-
-
- 
+    void pasDeClear() {	
+        eB.ajouter(p);
+        System.out.println(assertThrows(UnsupportedOperationException.class, () -> eB.getPieces().clear()));
+    }
+} 
